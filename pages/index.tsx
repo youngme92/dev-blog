@@ -2,10 +2,19 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
+import React, { useEffect } from 'react';
+import axios from 'axios';
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+  const fetchSingleUser = () => {
+    axios.get(process.env.NEXT_PUBLIC_API_URL + `/api/getSingleUser?id=${4}`).then((res) => console.log(res.data))
+    // axios.get(`/api/getSingleUser?id=${4}`).then((res) => console.log(res.data))
+  }
+  useEffect(() => {
+    fetchSingleUser();
+  },[])
   return (
     <>
       <Head>
